@@ -23,6 +23,11 @@ runs:
       run: echo ${{ inputs.access_token }} | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
       shell: bash
 
-    - name: Build and Push
-      run: podman build . -t ${{ inputs.host }}/${{ inputs.project_id }}/${{ inputs.image_id }} | podman push ${{ inputs.host }}/${{ inputs.project_id }}/${{ inputs.image_id }}
+    - name: Build the image 
+      run: podman build . -t ${{ inputs.image_id }}
       shell: bash
+
+    - name: Push the image to the Container Registry
+      run: podman push ${{ inputs.image_id }} ${{ inputs.host }}/${{ inputs.project_id }}/${{ inputs.image_id }}
+      shell: bash
+
