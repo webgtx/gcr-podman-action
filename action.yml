@@ -25,3 +25,4 @@ runs:
 
     - name: Build and Push
       run: podman build . -t ${{ host }}/${{ project_id }}/${{ inputs.image_id }} | podman push ${{ host }}/${{ project_id }}/${{ inputs.image_id }}
+      shell: bash
