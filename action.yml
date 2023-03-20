@@ -21,3 +21,4 @@ runs:
   steps:
     - name: Google Container Registry Authorization
       run: echo ${{ inputs.access_token }} | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
+      shell: bash
