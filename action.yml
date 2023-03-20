@@ -6,15 +6,15 @@ inputs:
     description: 'registry host'
     required: false 
     default: 'gcr.io'
-  # project_id:
-  #   description: 'project id'
-  #   required: true
+  project_id:
+    description: 'project id'
+    required: true
   access_token:
     description: "oauth2accesstoken"
     required: true
-  # image_id: 
-  #   description: "image name" 
-  #   required: true
+  image_id: 
+    description: "image tag name" 
+    required: true
 
 runs:
   using: "composite"
@@ -22,3 +22,6 @@ runs:
     - name: Google Container Registry Authorization
       run: echo ${{ inputs.access_token }} | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
       shell: bash
+
+    - name: Build and Push
+      run: podman build . -t ${{ host }}/${{ project_id }}/${{ inputs.image_id }} | podman push ${{ host }}/${{ project_id }}/${{ inputs.image_id }}
