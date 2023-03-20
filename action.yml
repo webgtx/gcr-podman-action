@@ -1,0 +1,23 @@
+name: 'Podman Build & Push (GCR)'
+description: 'Build and Push action for Google Container Registry'
+
+inputs:
+  host:  # id of input
+    description: 'registry host'
+    required: false 
+    default: 'gcr.io'
+  # project_id:
+  #   description: 'project id'
+  #   required: true
+  access_token:
+    description: "oauth2accesstoken"
+    required: true
+  # image_id: 
+  #   description: "image name" 
+  #   required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Google Container Registry Authorization
+      run: echo ${{ inputs.access_token }} | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
