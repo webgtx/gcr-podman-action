@@ -17,7 +17,7 @@ Build and Push your images securly with lightweight podman
 
 ## Example usage
 ```yml
-- uses: webgtx/gcr-podman-action@v2.0
+- uses: webgtx/gcr-podman-action@v2
   with:
     project_id: init64
     image_id: webgtx-blog:latest
