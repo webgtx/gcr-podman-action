@@ -10,8 +10,8 @@ Build and Push your images securly with lightweight podman
 | Variable                         | Description                                                                   |
 |----------------------------------|-------------------------------------------------------------------------------|
 | `access_token`                   | ***Required*** Service Account JSON Key (base64 encoded) or oauth Access Token|
-| `type`                           | Authetication Type `oauth2` or `jsonkey`, default "jsonkey"                   |
-| `project`                        | ***Required*** Project Name                                                   |
+| `auth_type`                      | Authetication Type `oauth2` or `jsonkey`, default "jsonkey"                   |
+| `project_id`                     | ***Required*** Project Name                                                   |
 | `host`                           |  Registry host name, default: "gcr.io"                                        |
 | `image_id`                       | ***Required*** Image name with tag                                            |
 
