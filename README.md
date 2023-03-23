@@ -1,6 +1,6 @@
 <div align=center>
 
-# Featureful google container registry action 🏗
+# Featureful Google Container Registry Push Action 🏗
 Build and Push your images securly with lightweight podman
   
 </div>
