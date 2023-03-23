@@ -24,12 +24,12 @@ runs:
   using: "composite"
   steps:
     - name:
-      if: inputs.auth_type == "jsonkey"
+      if: inputs.auth_type == 'jsonkey'
       run: echo ${{ inputs.access_token }} | podman login -u _json_key --password-stdin ${{ inputs.host }}
       shell: bash
 
     - name: Google Container Registry Authorization
-      if: inputs.auth_type == "oauth2"
+      if: inputs.auth_type == 'oauth2'
       run: echo ${{ inputs.access_token }} | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
       shell: bash
 
