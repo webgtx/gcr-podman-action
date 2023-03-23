@@ -3,7 +3,7 @@ description: 'Build and Push action for Google Container Registry'
 
 branding:
   icon: "upload-cloud"
-  color: "blud"
+  color: "blue"
 
 inputs:
   host:  # id of input
