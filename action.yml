@@ -3,14 +3,18 @@ description: 'Build and Push action for Google Container Registry'
 
 inputs:
   host:  # id of input
-    description: 'registry host'
+    description: "registry host"
     required: false 
-    default: 'gcr.io'
+    default: "gcr.io"
+  auth_type:
+    description: "Authentication type ( _json_key / 0auth2accesstoken )"
+    required: false
+    default: "jsonkey"
   project_id:
-    description: 'project id'
+    description: "project id"
     required: true
   access_token:
-    description: "oauth2accesstoken"
+    description: "access token or json key"
     required: true
   image_id: 
     description: "image tag name" 
@@ -19,7 +23,13 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name:
+      if: inputs.auth_type == "jsonkey"
+      run: echo ${{ inputs.access_token }} | podman login -u _json_key --password-stdin ${{ inputs.host }}
+      shell: bash
+
     - name: Google Container Registry Authorization
+      if: inputs.auth_type == "oauth2"
       run: echo ${{ inputs.access_token }} | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
       shell: bash
 
