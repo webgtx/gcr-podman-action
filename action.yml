@@ -30,7 +30,7 @@ runs:
 
     - name: Google Container Registry Authorization
       if: inputs.auth_type == 'oauth2'
-      run: echo ${{ inputs.access_token }} | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
+      run: echo ${{ inputs.access_token }} | base64 -d | podman login -u oauth2accesstoken --password-stdin ${{ inputs.host }}
       shell: bash
 
     - name: Build the image 
